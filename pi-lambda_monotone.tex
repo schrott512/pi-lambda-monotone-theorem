@@ -1,0 +1,229 @@
+\input{0_preamble.tex}
+
+\title{$\pi$-$\lambda$定理と単調族定理}
+\author{@schrott512}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{$\pi$-系, $\lambda$-系, 単調族}
+以下, 全集合を$\Omega$で表す.
+
+\begin{definition}{$\pi$-系}{pi-series}
+    $\Omega$の部分集合の族$\mathcal{P}$が$\pi$-系であるとは, 次の条件1),2)を満たすときをいう:
+    \begin{itemize}
+        \item[1)] $\Omega \in \mathcal{P}$,
+        \item[2)] $A,B\in \mathcal{P}$ならば, $A\cap B\in \mathcal{P}$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}{$\lambda$-系; ディンキン族, Dynkin class}{lambda-series}
+    $\Omega$の部分集合の族$\mathcal{L}$が次の1)-3)を満たすとき, $\mathcal{L}$をディンキン族または$\lambda$-系であるという:
+    \begin{itemize}
+        \item[1)] $\Omega \in \mathcal{L}$,
+        \item[2)] $A,B\in \mathcal{L},~A\subset B$ならば, $B\setminus A\in \mathcal{L}$,
+        \item[3)] $A_1,A_2,\cdots \in \mathcal{L},~A_1 \subset A_2 \subset \cdots$ならば, $\bigcup_{n=1}^\infty A_n \in \mathcal{L}$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}{単調族}{monotone-class}
+    $\Omega$の部分集合の族$\mathcal{M}$が次の1),2)を満たすとき, $\mathcal{M}$を単調族であるという:
+    \begin{itemize}
+        \item[1)] $A_1,A_2,\dots\in\mathcal{M}$, $A_1\subset A_2\subset\cdots$ならば, $\bigcup_{n=1}^\infty A_n\in\mathcal{M}$,
+        \item[2)] $A_1,A_2,\dots\in\mathcal{M}$, $A_1\supset A_2\supset\cdots$ならば, $\bigcap_{n=1}^\infty A_n\in\mathcal{M}$.
+    \end{itemize}
+\end{definition}
+
+\section{$\pi$-$\lambda$定理}
+\begin{lemma}{}{lem_1}
+    $\Omega$の部分集合の族$\mathcal{U}$に対し, $\mathcal{U}$を含む最小の$\lambda$-系$\mathcal{L}_0$がただ1つ存在する.
+    すなわち, $\mathcal{U}\subset \mathcal{L}$であるような任意の$\lambda$-系$\mathcal{L}$に対し, $\mathcal{U}\subset \mathcal{L}_0\subset \mathcal{L}$を満たす$\lambda$-系$\mathcal{L}_0$がただ1つ存在する.
+\end{lemma}
+\begin{proof}
+    主張を満たす$\lambda$-系を$\mathcal{L}_0$, $\mathcal{L}_0'$とする.
+    このとき, どちらもお互いを含むので, すなわち, $\mathcal{L}_0\subset \mathcal{L}_0'$かつ$\mathcal{L}_0'\subset \mathcal{L}_0$なので, $\mathcal{L}_0=\mathcal{L}_0'$である.
+
+    次に,
+    \begin{align*}
+        \mathcal{L}_0 = \bigcap_{\substack{\mathcal{{U}}\subset \mathcal{L} \\\text{$\mathcal{L}$は$\lambda$-系}}}\mathcal{L}
+    \end{align*}
+    とおくと, $\mathcal{L}_0$は最小の$\lambda$-系である.
+\end{proof}
+
+以後, $\Omega$の部分集合の族$\mathcal{U}$に対し, Lemma \ref{lem:lem_1}で定まる最小の$\lambda$-系を$\mathcal{L}(\mathcal{U})$で表す.
+
+\begin{lemma}{}{lem_2}
+    $\Omega$の部分集合の族$\mathcal{P}$, $\mathcal{L}$をそれぞれ$\pi$-系, $\lambda$-系とする.
+    このとき, 次の(1),(2)が成り立つ.
+    \begin{itemize}
+        \item[(1)] $\mathcal{G}_1:=\{A\subset\Omega\mid A\cap B\in\mathcal{L},\,\forall B\in\mathcal{P}\}$は$\lambda$-系である.
+        \item[(2)] $\mathcal{G}_2:=\{A\subset\Omega\mid A\cap B\in\mathcal{L},\,\forall B\in\mathcal{L}\}$は$\lambda$-系である.
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    (1) まず, 任意の$B\in\mathcal{P}$に対して, $\Omega\cap B=B\in \mathcal{P}$.
+    ゆえに$\Omega\in\mathcal{G}_1$である.
+
+    次に$A_1,A_2\in\mathcal{G}_1$, $A_1\subset A_2$とすると, 任意の$B\in\mathcal{P}$に対して, $A_1\cap B,A_2\cap B\in\mathcal{L},A_1\cap B\subset A_2\cap B$であり, $\mathcal{L}$は$\lambda$-系だから, $(A_2\setminus A_1)\cap B=(A_2\cap B)\setminus(A_1\cap B)\in \mathcal{L}$である.
+    したがって, $A_2\setminus A_1\in \mathcal{G}_1$を得る.
+
+    最後に$A_1,A_2,\cdots\in\mathcal{G}_1$, $A_1\subset A_2\subset \cdots$とすると, 任意の$B\in\mathcal{P}$に対して, $A_1\cap B,A_2\cap B,\cdots\in\mathcal{L}$であり, かつ$A_1\cap B\subset A_2\cap B\subset\cdots$である.
+    $\mathcal{L}$は$\lambda$-系でだから, $\bigcup_{n=1}^\infty A_n \cap B=\bigcup_{n=1}^\infty(A_n\cap B)\in\mathcal{L}$である.
+    よって, $\bigcup_{n=1}^\infty A_n\in \mathcal{G}_1$である.
+    以上より, $\mathcal{G}_1$は$\lambda$-系である.
+
+    (2)も(1)と同様にして分かる.
+\end{proof}
+
+\begin{lemma}{}{lem_3}
+    集合族$\mathcal{P}$を$\pi$-系とする.
+    このとき, $\mathcal{L}(\mathcal{P})$は$\pi$-系である.
+\end{lemma}
+\begin{proof}
+    $\mathcal{L}=\mathcal{L}(\mathcal{P})$とおく.
+
+    $\Omega\in\mathcal{P}$かつ$\mathcal{P}\subset \mathcal{L}$より$\Omega\in\mathcal{L}$である.
+
+    $\mathcal{G}=\{A\in\Omega\mid A\cap B\in\mathcal{L},\,\forall B\in\mathcal{P}\}$とおく.
+    $A\in\mathcal{P}$とすると, 任意の$B\in\mathcal{P}$に対し$A\cap B\in\mathcal{L}$である.
+    よって, $A\in\mathcal{G}$, すなわち$\mathcal{P}\subset\mathcal{G}$である.
+    Lemma \ref{lem:lem_2} (1)より$\mathcal{G}$は$\lambda$-系だから, $\mathcal{L}\subset \mathcal{G}$を得る.
+
+    $\mathcal{G}'=\{A\in\Omega\mid A\cap B\in\mathcal{L},\,\forall B\in\mathcal{L}\}$とおく.
+    $A\in\mathcal{P}$, $B\in\mathcal{L}$とする.
+    $\mathcal{L}\subset\mathcal{G}$より, $A\cap B\in\mathcal{L}$である.
+    よって, $A\in\mathcal{G}'$であり, したがって$\mathcal{P}\subset\mathcal{G}'$を得る.
+    Lemma \ref{lem:lem_2} (2)より$\mathcal{G}'$は$\lambda$-系だから, $\mathcal{L}\subset\mathcal{G}'$である.
+    したがって, $A,B\in\mathcal{L}$ならば$A\cap B\in\mathcal{L}$であり, 結論を得る.
+\end{proof}
+
+\begin{theorem}{Dynkinの$\pi$-$\lambda$定理}{}
+    $\mathcal{A},\mathcal{L},\mathcal{P}$を$\Omega$の部分集合の族とするとき, 次の(1)-(3)が成り立つ.
+    \begin{itemize}
+        \item[(1)] $\mathcal{A}$が$\pi$-系かつ$\lambda$-系ならば, $\mathcal{A}$は$\sigma$-加法族である.
+        \item[(2)] $\mathcal{P},\mathcal{L}$をそれぞれ$\pi$-系, $\lambda$-系とする.
+            このとき, $\mathcal{P}\subset\mathcal{L}$ならば$\sigma(\mathcal{P})\subset\mathcal{L}$である.
+        \item[(3)] $\mathcal{P}$を$\pi$-系とする.
+            このとき, $\sigma(\mathcal{P})=\mathcal{L}(\mathcal{P})$である.
+    \end{itemize}
+    ここで, $\sigma(\mathcal{P})$は$\mathcal{P}$を含む最小の$\sigma$-加法族を表す.
+\end{theorem}
+\begin{proof}
+    (1) $\mathcal{A}$は$\pi$-系より, $\Omega\in\mathcal{A}$である.
+
+    $A\in\mathcal{A}$とする.
+    $\Omega\in\mathcal{A}$であり, $\mathcal{A}$は$\lambda$-系なので, $A^c=\Omega\setminus A\in\mathcal{A}$が分かる.
+
+    $A_1,A_2,\dots\in\mathcal{A}$とする.
+    $B_n=\bigcup_{j=1}^nA_j~(n=1,2,\dots)$とおくと, 各$A_n^c\in\mathcal{A}$であり$\mathcal{A}$は$\pi$-系なので, 各$B_n=(\bigcap_{j=1}^n A_j^c)^c$なので$B_1,B_2,\dots\in\mathcal{A}$である.
+    また$B_1\subset B_2\subset\cdots$である.
+    $\mathcal{A}$は$\lambda$-系だから$\bigcup_{n=1}^\infty A_n=\bigcup_{n=1}^\infty B_n\in\mathcal{A}$を得る.
+
+    したがって, $\mathcal{A}$は$\sigma$-加法族である.
+
+    (2) $\mathcal{L}(\mathcal{P})$は$\lambda$-系であり, Lemma \ref{lem:lem_3}より$\pi$-系でもある.
+    よって(1)より$\mathcal{L}(\mathcal{P})$は$\sigma$-加法族である.
+    $\mathcal{P}\subset \mathcal{L}(\mathcal{P})$より, $\sigma(\mathcal{P})\subset \mathcal{L}(\mathcal{P})$であり, また$\mathcal{L}(\mathcal{P})\subset\mathcal{L}$なので結論を得る.
+
+    (3) (2)より$\sigma(\mathcal{P})\subset\mathcal{L}(\mathcal{P})$は明らか.
+    また, $\sigma$-加法族は$\lambda$-系でもあるので, $\mathcal{P}\subset \sigma(\mathcal{P})$より$\mathcal{L}(\mathcal{P})\subset\sigma(\mathcal{P})$を得る.
+\end{proof}
+
+\section{単調族定理}
+Lemma \ref{lem:lem_1}と同様にして次が得られる.
+\begin{lemma}{}{lem_4}
+    $\Omega$の部分集合の族$\mathcal{U}$に対し, $\mathcal{U}$を含む最小の単調族$\mathcal{M}_0$がただ1つ存在する.
+    すなわち, $\mathcal{U}\subset \mathcal{M}$であるような任意の単調族$\mathcal{M}$に対し, $\mathcal{U}\subset \mathcal{M}_0\subset \mathcal{M}$を満たす単調族$\mathcal{M}_0$がただ1つ存在する.
+\end{lemma}
+
+以後, $\Omega$の部分集合の族$\mathcal{U}$に対し, Lemma \ref{lem:lem_4}で定まる最小の単調族を$\mathcal{M}(\mathcal{U})$で表す.
+
+\begin{lemma}{}{lem_5}
+    $\mathcal{M},\mathcal{F}$をそれぞれ$\Omega$の単調族, 有限加法族とする.
+    このとき次の(1)-(3)が成り立つ.
+    \begin{itemize}
+        \item[(1)] $\mathcal{M}_1:=\{A\in\Omega\mid A^c\in\mathcal{M}\}$は単調族である.
+        \item[(2)] $\mathcal{M}_2:=\{A\in\Omega\mid A\cup B\in\mathcal{M},\,\forall B\in\mathcal{F}\}$は単調族である.
+        \item[(3)] $\mathcal{M}_2:=\{A\in\Omega\mid A\cup B\in\mathcal{M},\,\forall B\in\mathcal{M}\}$は単調族である.
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    (1) $A_1,A_2,\dots\in\mathcal{M}_1$, $A_1\subset A_2\subset\cdots$とする.
+    よって$A_1,A_2,\dots\in\mathcal{M}$, $A_1^c\supset A_2^c\supset\cdots$であり, $\mathcal{M}$は単調族なので, $(\bigcup_{n=1}^\infty A_n)^c=\bigcap_{n=1}^\infty A_n^c\in\mathcal{M}$である.
+    したがって$\bigcup_{n=1}^\infty A_n\in\mathcal{M}_1$である.
+
+    $A_1,A_2,\dots\in\mathcal{M}_1$, $A_1\supset A_2\supset\cdots$に対して$\bigcap_{n=1}^\infty A_n\in\mathcal{M}_1$であることについても同様である.
+
+    (2) $A_1,A_2,\dots\in\mathcal{M}_2$, $A_1\subset A_2\subset\cdots$とし, $B\in\mathcal{F}$を任意にとる.
+    このとき$A_1\cup B,A_2\cup B,\dots\in\mathcal{M}$, $A_1\cup B\subset A_2\cup B\subset\cdots$であり, $\mathcal{M}$は単調族だから, $\bigcup_{n=1}^\infty A_n \cup B=\bigcup_{n=1}^\infty (A_n \cup B)\in\mathcal{M}$である.
+    したがって$\bigcup_{n=1}^\infty A_n\in\mathcal{M}_2$を得る.
+
+    $A_1,A_2,\dots\in\mathcal{M}_2$, $A_1\supset A_2\supset\cdots$に対して$\bigcap_{n=1}^\infty A_n\in\mathcal{M}_2$であることについても同様である.
+
+    (3) (2)と同様である.
+\end{proof}
+
+\begin{lemma}{}{lem_6}
+    $\mathcal{F}$を$\Omega$の有限加法族とする.
+    このとき, $\mathcal{M}(\mathcal{F})$は有限加法族である.
+\end{lemma}
+\begin{proof}
+    $\mathcal{M}=\mathcal{M}(\mathcal{F})$とおく.
+
+    $\Omega\in\mathcal{F}$, $\mathcal{F}\subset\mathcal{M}$より$\Omega\in\mathcal{M}$である.
+
+    $\tilde{\mathcal{M}}=\{A\in\Omega\mid A^c\in\mathcal{M}\}$とおく.
+    $A\in\mathcal{F}$とすると, $\mathcal{F}$は有限加法族だから$A^c\in\mathcal{F}$である.
+    $\mathcal{F}\subset\mathcal{M}$より$A^c\in\mathcal{M}$であり, したがって$A\in\tilde{\mathcal{M}}$, すなわち$\mathcal{F}\subset\tilde{\mathcal{M}}$である.
+    Lemma \ref{lem:lem_5}より, $\tilde{\mathcal{M}}$は単調族なので, $\mathcal{M}\subset\tilde{\mathcal{M}}$を得る.
+    しがたって, すべての$A\in\mathcal{M}$に対して$A^c\in\mathcal{M}$である.
+
+    $\tilde{\mathcal{M}}'=\{A\in\Omega\mid A\cup B\in\mathcal{M},\,\forall B\in\mathcal{F}\}$とおく.
+    $A\in\mathcal{F}$とすると, $\mathcal{F}$は有限加法族だから任意の$B\in\mathcal{F}$に対して$A\cup B\in\mathcal{F}$である.
+    よって$A\in\tilde{\mathcal{M}}'$であり, すなわち$\mathcal{F}\subset\tilde{\mathcal{M}}'$である.
+    Lemma \ref{lem:lem_5}より, $\mathcal{M}\subset\tilde{\mathcal{M}}'$を得る.
+    したがって, すべての$A\in\mathcal{M}$と$B\in\mathcal{F}$に対し, $A\cup B\in\mathcal{M}$である.
+
+    また, $\tilde{\mathcal{M}}''=\{A\in\Omega\mid A\cup B\in\mathcal{M},\,\forall B\in\mathcal{M}\}$とおく.
+    $A\in\mathcal{F}$とすると先の議論により, 任意の$B\in\mathcal{M}$に対し$A\cup B\in\mathcal{M}$である.
+    よって$A\in\tilde{\mathcal{M}}''$, すなわち$\mathcal{F}\subset\tilde{\mathcal{M}}''$である.
+    同じくLemma \ref{lem:lem_5}を用いて$\mathcal{M}\subset\tilde{\mathcal{M}}''$を得る.
+    したがって, すべての$A,B\in\mathcal{M}$に対して$A\cup B\in\mathcal{M}$であることが得られる.
+
+    以上より, $\mathcal{M}$が有限加法族であることが示された.
+\end{proof}
+
+\begin{theorem}{単調族定理}{}
+    $\mathcal{M},\mathcal{F}$をそれぞれ$\Omega$の部分集合の族とする.
+    このとき, 次の(1)-(3)が成り立つ.
+    \begin{itemize}
+        \item[(1)] $\mathcal{M}$が単調族かつ有限加法族であるならば, $\mathcal{M}$は$\sigma$-加法族である.
+        \item[(2)] $\mathcal{F},\mathcal{M}$をそれぞれ有限加法族, 単調族とする.
+            このとき, $\mathcal{F}\subset\mathcal{M}$ならば$\sigma(\mathcal{F})\subset\mathcal{M}$である.
+        \item[(3)] $\mathcal{F}$を有限加法族とする.
+            このとき, $\sigma(\mathcal{F})=\mathcal{M}(\mathcal{F})$ である.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    (1) $\Omega\in\mathcal{M}$は$\mathcal{M}$が単調族, 有限加法族であることより明らか.
+    また, $A\in\mathcal{M}$に対し$A^c\in\mathcal{M}$であることも同様に明らか.
+
+    $A_1,A_2,\dots\in\mathcal{M}$とし, $B_n=\bigcup_{j=1}^n A_j$とおく.
+    $\mathcal{M}$は有限加法族だから各$B_n\in\mathcal{M}$である.
+    $B_1\subset B_2\subset\cdots$で, $\mathcal{M}$は単調族だから$\bigcup_{n=1}^\infty A_n=\bigcup_{n=1}^\infty B_n\in\mathcal{M}$である.
+
+    以上より$\mathcal{M}$は$\sigma$-加法族である.
+
+    (2) $\mathcal{F}\subset\mathcal{M}$とする.
+    よって$\mathcal{M}(\mathcal{F})\subset\mathcal{M}$である.
+    $\mathcal{M}(\mathcal{F})$は単調族であり, Lemma \ref{lem:lem_6}よりは有限加法族でもあるので, (1)より$\sigma$-加法族である.
+    したがって, $\sigma(\mathcal{F})\subset\mathcal{M}(\mathcal{F})$なので結論を得る.
+
+    (3) (2)より$\sigma(\mathcal{F})\subset\mathcal{M}(\mathcal{F})$である.
+    一方, $\sigma(\mathcal{F})$は$\mathcal{F}$を含む単調族でもあるので, $\mathcal{M}(\mathcal{F})\subset\sigma(\mathcal{F})$である.
+    したがって結論を得る.
+\end{proof}
+
+\end{document}
